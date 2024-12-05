@@ -1,5 +1,5 @@
 import React from 'react'
-import { Advertisement } from "../../components"
+import { Advertisement, Comments } from "../../components"
 import BlogMainPhoto from "../../../public/images/blog/image.png"
 import Image from 'next/image'
 import blogpage from "../../assets/blog/Vector.svg"
@@ -14,7 +14,6 @@ import BlogStar from "../../assets/blog/Stars.svg"
 import { Input } from "../../components/ui/input"
 import { comments } from "../../helper"
 import FiveStaricon from "../../assets/blog/Frame51.svg"
-
 const Maincomponent = () => {
     return (
         <>
@@ -257,44 +256,17 @@ const Maincomponent = () => {
 
             <div className='mt-[59px] ml-[133px] mr-[133px]'>
                 {
-                    comments.map((Comment, index) => {
-                        return < >
-                            <div className=" mx-auto border px-6 py-4 rounded-lg w-[1665px] mb-[62px]" key={index}>
-                                <div className="flex items-center mb-6">
-                                    <img
-                                        src={Comment.photo}
-                                        alt="Avatar"
-                                        className="w-12 h-12 rounded-full mr-4"
-                                    />
-                                    <div>
-                                        <div className="text-lg font-medium text-gray-800">{Comment.name}</div>
-                                        <div className="text-gray-500">2 hours ago</div>
-                                    </div>
-                                </div>
-                                <p className="text-lg leading-relaxed mb-6">
-                                    {Comment.comment}
-                                </p>
-                                <div className="flex justify-between items-center">
-                                    <div>
-                                        <a href="#" className="text-gray-500 hover:text-gray-700 mr-4">
-                                            <i className="far fa-thumbs-up"></i> Like
-                                        </a>
-                                        <a href="#" className="text-gray-500 hover:text-gray-700">
-                                            <i className="far fa-comment-alt"></i> Reply
-                                        </a>
-                                    </div>
-                                    <div className="flex items-center">
-                                        <a href="#" className="text-gray-500 hover:text-gray-700 mr-4">
-                                            <i className="far fa-flag"></i> Report
-                                        </a>
-                                        <a href="#" className="text-gray-500 hover:text-gray-700">
-                                            <i className="far fa-share-square"></i> Share
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </>
-                    })
+                    comments.map((Comment, index) =>
+                        <Comments
+                            comment={Comment.comment}
+                            name={Comment.name}
+                            photo={Comment.photo}
+                            date={Comment.date}
+                            key={index}
+
+                        />
+
+                    )
                 }
             </div>
 
